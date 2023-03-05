@@ -6,14 +6,14 @@
     
     if(empty($airport_id)){
         // echo "Enter airport ID";
-        echo '<script> alert(" Enter airport ID");setTimeout(()=>{window.location.replace("index.html");},100); </script>';
+        echo '<script> alert(" Enter airport ID");setTimeout(()=>{window.location.replace("index.php");},100); </script>';
         exit();
     }
     else{
         $sql = "DELETE FROM airport WHERE airport_id= '$airport_id';";
         if($conn->query($sql)== true){
             // echo "Succesfully Deleted";
-            echo '<script> alert(" Succesfully Deleted");setTimeout(()=>{window.location.replace("index.html");},100); </script>';
+            echo '<script> alert(" Succesfully Deleted");setTimeout(()=>{window.location.replace("index.php");},100); </script>';
         }
         else{
             // echo "ERROR: $sql <br> $conn->error";

@@ -13,7 +13,17 @@
     <div class="login-form">
         <form action="del_aircraft.php" name="frm" onsubmit=func()>
             <div class="input-field">
-              <input type="text" id="aircraft_id" name="aircraft_id" placeholder="Enter Aircraft ID" autocomplete="nope">
+              <select name= "aircraft_id">
+                <option >select</option>
+                  <?php
+                    $sql = "select * from aircraft";
+                    $result = mysqli_query($conn, $sql);
+                    while($row = mysqli_fetch_array($result)){
+                      echo '<option>'.$row['aircraft_id'].'</option>';
+                    }
+                  ?>
+                
+              </select>
             </div>
           <div class="action">
             <button><b>Drop</b></button>

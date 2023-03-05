@@ -1,3 +1,7 @@
+<?php
+  session_start();
+  include "../../db_connect.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,9 +16,21 @@
     <h1 class="h1">Delete a Airport</h1>
     <div class="login-form">
         <form action="del_airport.php" name="frm" onsubmit=func3()>
-            <div class="input-field">
+            <!-- <div class="input-field">
               <input type="text" id="airport_id" name="airport_id" placeholder="Enter Airport ID" autocomplete="nope">
-            </div>
+            </div> -->
+            <div class= "input-field">
+            <select name= "airport_id">
+                <option>select</option>
+                <?php
+                  $sql= "SELECT * from airport";
+                  $result= mysqli_query($conn,$sql);
+                  while($row = mysqli_fetch_array($result)){
+                    echo '<option>'.$row['airport_id'].'</option>';
+                  }
+                  ?>
+            </select>
+          </div>
           <div class="action">
             <button><b>Drop</b></button>
           </div>
