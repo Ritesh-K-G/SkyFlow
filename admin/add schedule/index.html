@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="index.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../myscript.js"></script>
+    <title>Add schedule</title>
+</head>
+
+<body>
+    <h1 class="h1">Add a schedule</h1>
+    <div class="add-form">
+        <form action="add_schedule.php">
+            <h1 style="text-align:center">New Schedule Details</h1>
+            <div class="content">
+                <div class="input-field">
+                    <input type="number" id="schedule_id" name="schedule_id" placeholder="Schedule ID" autocomplete="nope">
+                </div>
+                <div class="input-field">
+                    <input type="text" name="aircraft_id" placeholder="Aircraft ID" autocomplete="nope">
+                </div>
+                <div class="input-field">
+                    <input type="text" name="source" placeholder="Source Airport ID" autocomplete="nope">
+                </div>
+                <div class="input-field">
+                    <input type="text" name="destination" placeholder="Destination Airport ID" autocomplete="nope">
+                </div>
+                <div class="input-field">
+                    <input type="date" name="date" autocomplete="date">
+                </div>
+                <div class="input-field">
+                    <input type="time" name="time" autocomplete="time">
+                </div>
+            </div>
+            <div class="action">
+                <button><b>Add Schedule</b></button>
+            </div>
+        </form>
+    </div>
+    <script src="./script_login.js"></script
+</body>
+</html>
