@@ -1,5 +1,8 @@
 <?php
   session_start();
+  if(!isset($_SESSION['emp_name'])) {
+    header('location: emp_login.php');
+  }
 ?>
 
 <!DOCTYPE html>

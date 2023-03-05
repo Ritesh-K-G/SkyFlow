@@ -1,6 +1,20 @@
 <?php
     session_start();
     include "../../db_connect.php";
+    if(isset($_GET['id'])) {
+        $id=$_GET['id'];
+        $word = $_SESSION['ps_id'];
+        $sql = "DELETE from books where ticket_code = '$id' and ps_id = '$word';";
+        if($conn->query($sql)== true){
+            echo '<script> alert("Ticket successfully cancelled");setTimeout(()=>{window.location.replace("index.php");},500); </script>';
+            exit;
+        }
+        else{
+            echo "ERROR: $sql <br> $conn->error";
+        }
+        header("Location:index.php");
+        exit;
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,7 +28,7 @@
     <div class="data">
             <h1 class="welcome">Welcome to Airline Management System </h1>
             <h2>My Bookings</h2>
-            <table>
+            <table border="1" cellpadding="0">
                 <thead>
                     <tr>
                         <th>Ticket Code</th>
@@ -22,6 +36,7 @@
                         <th>Date</th>
                         <th>Time</th>
                         <th>Aircraft ID</th>
+                        <th>Cancel Booking</th>
                     </tr>
                 </thead>
                 <?php
@@ -38,6 +53,9 @@
                             "<td>" . $row["date"]. "</td>".
                             "<td>" . $row["time"]. "</td>".
                             "<td>" . $row["aircraft_id"]. "</td>".
+                            "<td> <a href='index.php?id=".$row['ticket_code']."'
+                                    class='dltscd'>Cancel</a>        
+                            </td>".
                             "</tr>";
                         }
                     }

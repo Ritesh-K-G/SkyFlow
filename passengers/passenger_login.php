@@ -29,7 +29,7 @@
                 $_SESSION['ps_age']= $row['ps_age'];
                 $_SESSION['ps_city']= $row['ps_city'];
                 $_SESSION['ps_contact']= $row['ps_contact'];
-                header("Location: passenger-homepage.html"); 
+                header("Location: passenger-homepage.php"); 
                 exit();
             }
             else{

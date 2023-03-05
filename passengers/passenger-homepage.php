@@ -1,3 +1,9 @@
+<?php
+  session_start();
+  if(!isset($_SESSION['ps_name'])) {
+    header('location: passenger_login.php');
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
