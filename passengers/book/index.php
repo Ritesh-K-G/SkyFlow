@@ -3,62 +3,46 @@
     include "../../db_connect.php";
 ?>
 <!DOCTYPE html>
-<html>
-    <head>
-        <script src="../../myscript.js"></script>
-        <title>
-            AMS
-        </title>
-    </head>
-    <link rel="stylesheet" href="index.css">
-    <body>
-        <div class="data">
-            <h1 class="welcome">Welcome to Airline Management System </h1>
-            <h2>Book tickets</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Ticket Code</th>
-                        <th>Date</th>
-                        <th>Time</th>
-                        <th>Source</th>
-                        <th>Destination</th>
-                        <th>Aircraft ID</th>
-                        <th>Class</th>
-                        <th>Price</th>
-                    </tr>
-                </thead>
-                <?php
-                    $sql="Select * from ticket natural join schedule;";
-                    $result=mysqli_query($conn,$sql);
-                    if(mysqli_num_rows($result) > 0)
-                    {
-                        while($row = mysqli_fetch_array($result))
-                        {
-                            echo "<tr>" .
-                            "<td>" . $row["ticket_code"]. "</td>".
-                            "<td>" . $row["date"]. "</td>".
-                            "<td>" . $row["time"]. "</td>".
-                            "<td>" . $row["source"]. "</td>".
-                            "<td>" . $row["destination"]. "</td>".
-                            "<td>" . $row["aircraft_id"]. "</td>".
-                            "<td>" . $row["class"]. "</td>".
-                            "<td>" . $row["price"]. "</td>".
-                            "</tr>";
-                        }
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style2.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../myscript.js"></script>
+    <title>Search the Schedule</title>
+</head>
+<body>
+    <h1 class="h1">Search the Schedule</h1>
+    <div class="login-form">
+        <form action="search_scd.php" name="frm" onsubmit=func()>
+          <div class="input-field">
+            <select name= "src_prt">
+              <option >Source</option>
+              <?php
+                    $sql = "select * from airport";
+                    $result = mysqli_query($conn, $sql);
+                    while($row = mysqli_fetch_array($result)) {
+                      echo '<option>'.$row['airport_city'].'</option>';
                     }
+                  ?>
+              </select>
+              <select name= "dest_prt">
+                <option >Destination</option>
+                <?php
+                  $sql = "select * from airport";
+                    $result = mysqli_query($conn, $sql);
+                  while($row = mysqli_fetch_array($result)) {
+                    echo '<option>'.$row['airport_city'].'</option>';
+                  }
                 ?>
-            </table>
-        </div>
-        <div class="login-form">
-        <form action="book.php">
-            <div class="input-field">
-              <input type="text" id="ticket_code" name="ticket_code" placeholder="Enter ticket code to book the journey:" autocomplete="nope">
-            </div>
+              </select>
+              <input type="date" name="date" autocomplete="date">
+          </div>
           <div class="action">
-            <button><b>Book</b></button>
+              <button><b>Search</b></button>
           </div>
         </form>
-      </div>
-    </body>
+    </div>
+</body>
 </html>
